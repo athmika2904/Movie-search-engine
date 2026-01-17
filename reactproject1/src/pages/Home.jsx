@@ -1,10 +1,29 @@
 import Moviecard from "../components/Moviecard";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
+import { searchMovie,getPopular } from "../assets/services/api";
 function Home(){
     const[search,setSearch]=useState("");
-    const movies=[{id:1,title:"John Wick",releasedate:"2020"},{id:2,title:"Bohn Wick",releasedate:"2020"}];
-    const handleSearch=()=>{
-
+    const [movies,setMovies]=useState([]);
+    const[error,setError]=useState(null);
+    const[loading,setLoading]=useState(true);
+    useEffect(()=>{
+        const loadpopularmovies=async()=>{
+            try{
+                const popularmovies=await getPopular();
+                setMovies(popularmovies)
+            }catch(err){
+                console.log(err)
+                setError("Failed to load movies...");
+            }
+            finally{
+                setLoading(false);
+            }
+        }
+        loadpopularmovies();
+    },[]);
+    useEffect(()=>{},)
+    const handleSearch=(e)=>{
+        e.preventDefault();
     }
     return(
         <div className="home">
