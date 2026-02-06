@@ -22,7 +22,7 @@ export const MovieProvider=({children})=>{
     const value={
         favourites,addtoFav,removefav,isfav
     }
-    return <MovieContext.Provider value={value}>
+    return (<MovieContext.Provider value={value}>
         {children}
-    </MovieContext.Provider>
+    </MovieContext.Provider>);
 }

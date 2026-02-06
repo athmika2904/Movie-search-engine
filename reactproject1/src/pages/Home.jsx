@@ -1,6 +1,7 @@
 import Moviecard from "../components/Moviecard";
 import { useState ,useEffect} from "react";
 import { searchMovie,getPopular } from "../assets/services/api";
+import "../Home.css";
 function Home(){
     const[search,setSearch]=useState("");
     const [movies,setMovies]=useState([]);

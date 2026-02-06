@@ -1,4 +1,6 @@
+import "../Favorites.css";
 import { useMovieContext } from "../contexts/MovieContext";
+import Moviecard from "../components/Moviecard";
 function Favourites(){
     const {favourites}=useMovieContext();
     if(favourites){
@@ -9,7 +11,7 @@ function Favourites(){
                 {
                     favourites.map((m)=>(
                         
-                        (<Moviecard movie={m} key={m.id}/>)
+                        <Moviecard movie={m} key={m.id}/>
                     ))
                 }
                 </div>
@@ -18,9 +20,9 @@ function Favourites(){
     }
     return(  
         <div className="emptyfavs">
-            <h3>No favourite movies added</h3>
+            <h2>No favourite movies added</h2>
             <p>Start adding movies to your favourites</p>
         </div>
-    )
+    );
 }
 export default Favourites;
